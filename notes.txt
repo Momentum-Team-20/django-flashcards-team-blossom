@@ -1,2 +1,9 @@
-Users
--create decks (groups?) of flashcards (Q&A)
+TODO
+1. Write models 
+    - decks
+    - flashcards
+2. admin/superuser
+3. a few flashcards in admin
+4. user can add cards
+5. user add decks
+
