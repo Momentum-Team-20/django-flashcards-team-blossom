@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .models import Deck
+
 
 # Create your views here.
 def deck_list(request):
