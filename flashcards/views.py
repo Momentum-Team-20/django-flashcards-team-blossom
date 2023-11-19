@@ -8,6 +8,10 @@ def deck_list(request):
     return render(request, 'flashcards/index.html', {'decks': decks})
 
 
-def cards(request):
-    flashcards = Flashcard.objects.all()
+def cards(request, deck_number):
+    flashcards = Flashcard.objects.filter(deck_id=deck_number)
     return render(request, 'flashcards/cards.html', {'flashcards': flashcards})
+
+# def create_new_deck(request):
+#     if request.method == 'POST':
+#         if form.is_valid():
