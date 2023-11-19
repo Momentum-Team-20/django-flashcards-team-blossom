@@ -6,7 +6,8 @@
   {% for flashcard in flashcards %}
   <li>{{ flashcard.question }} {{ flashcard.answer }}</li>
   <li>
-    <a href="{% url 'edit_flashcard' flashcard.pk %}">Edit this flashcard</a>
+    <a href="{% url 'edit_flashcard' flashcard.pk %}">Edit</a>
+    <a href="{% url 'delete_flashcard' flashcard.pk %}">Delete</a>
   </li>
   {% endfor %}
 </ul>

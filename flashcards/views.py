@@ -46,3 +46,8 @@ def edit_flashcard(request, pk):
     else:
         form = FlashcardForm(instance=Flashcard)
     return render(request, 'flashcards/edit_flashcard.html', {'form': form})
+
+def delete_flashcard(request, pk):
+    form = get_object_or_404(Flashcard, pk=pk)
+    form.delete()
+    return redirect('home')

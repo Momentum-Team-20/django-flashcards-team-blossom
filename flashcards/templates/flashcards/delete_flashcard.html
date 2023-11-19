@@ -1,0 +1,11 @@
+{% extends 'albums_base.html' %} {% block content %}
+
+<h1>Delete this flashcard???</h1>
+<p>Are you sure you want to delete this flashcard?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <input type="'submit" action="" value="Yes, delete it" />
+</form>
+
+{% endblock %}
