@@ -22,4 +22,4 @@ def create_new_deck(request):
             return redirect('home')
     else:
         form = DeckForm()
-    return render(request, 'flashcards/create_deck.html', {'form': 'form'})
+    return render(request, 'flashcards/create_deck.html', {'form': form})
