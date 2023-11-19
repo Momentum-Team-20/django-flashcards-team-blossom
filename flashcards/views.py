@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Deck, Flashcard
-from .forms import DeckForm
+from .forms import DeckForm, FlashcardForm
 
 
 # Create your views here.
@@ -23,3 +23,14 @@ def create_new_deck(request):
     else:
         form = DeckForm()
     return render(request, 'flashcards/create_deck.html', {'form': form})
+
+
+def create_new_flashcard(request):
+    if request.method == 'POST':
+        form = FlashcardForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = FlashcardForm()
+    return render(request, 'flashcards/create_flashcard.html', {'form': form})
