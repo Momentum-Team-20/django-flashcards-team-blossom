@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Deck, Flashcard
 from .forms import DeckForm, FlashcardForm
 
@@ -34,3 +34,15 @@ def create_new_flashcard(request):
     else:
         form = FlashcardForm()
     return render(request, 'flashcards/create_flashcard.html', {'form': form})
+
+
+def edit_flashcard(request, pk):
+    form = get_object_or_404(Flashcard, pk=pk)
+    if request.method == 'POST':
+        form = FlashcardForm(request.POST, instance=Flashcard)
+        if form.is_valid():
+            form.save()
+            return redirect('home', pk=pk)
+    else:
+        form = FlashcardForm(instance=Flashcard)
+    return render(request, 'flashcards/edit_flashcard.html', {'form': form})

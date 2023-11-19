@@ -16,3 +16,5 @@ class DeckForm(ModelForm):
     class Meta:
         model = Deck
         fields = ['title', 'created_at']
+
+
