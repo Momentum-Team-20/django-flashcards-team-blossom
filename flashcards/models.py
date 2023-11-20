@@ -5,12 +5,16 @@ from django.utils import timezone
 
 # Create your models here.
 class User(AbstractUser):
-    pass
+    def __str__(self):
+        return self.username
 
 
 class Deck(models.Model):
     title = models.CharField(max_length=250)
     created_at = models.DateField(default=timezone.now, null=True)
+    user = models.ForeignKey(
+        'User', on_delete=models.CASCADE, related_name='users'
+    )
 
     def __str__(self):
         return self.title

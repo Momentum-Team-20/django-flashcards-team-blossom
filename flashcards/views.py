@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Deck, Flashcard
 from .forms import DeckForm, FlashcardForm
 
 
-# Create your views here.
+@login_required
 def deck_list(request):
-    decks = Deck.objects.all()
+    decks = Deck.objects.filter(user=request.user)
     return render(request, 'flashcards/index.html', {'decks': decks})
 
 
