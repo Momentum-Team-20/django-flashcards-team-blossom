@@ -10,7 +10,7 @@ class User(AbstractUser):
 
 class Deck(models.Model):
     title = models.CharField(max_length=250)
-    created_at = models.DateField(default=timezone.now)
+    created_at = models.DateField(default=timezone.now, null=True)
 
     def __str__(self):
         return self.title

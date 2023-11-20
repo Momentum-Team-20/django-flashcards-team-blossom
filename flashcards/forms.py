@@ -11,10 +11,7 @@ class FlashcardForm(ModelForm):
 
 
 class DeckForm(ModelForm):
-    created_at = forms.DateField()
 
     class Meta:
         model = Deck
-        fields = ['title', 'created_at']
-
-
+        fields = ['title']
