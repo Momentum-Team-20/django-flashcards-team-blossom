@@ -37,15 +37,17 @@ def create_new_flashcard(request):
 
 
 def edit_flashcard(request, pk):
-    form = get_object_or_404(Flashcard, pk=pk)
+    flashcard = get_object_or_404(Flashcard, pk=pk)
     if request.method == 'POST':
-        form = FlashcardForm(request.POST, instance=Flashcard)
+        form = FlashcardForm(request.POST, instance=flashcard)
         if form.is_valid():
             form.save()
-            return redirect('home', pk=pk)
+            return redirect('home')
     else:
-        form = FlashcardForm(instance=Flashcard)
+        form = FlashcardForm(instance=flashcard)
     return render(request, 'flashcards/edit_flashcard.html', {'form': form})
+# <django.db.models.query_utils.DeferredAttribute object at 0x1028eb110>
+
 
 def delete_flashcard(request, pk):
     form = get_object_or_404(Flashcard, pk=pk)
