@@ -42,7 +42,8 @@ def edit_flashcard(request, pk):
         form = FlashcardForm(request.POST, instance=flashcard)
         if form.is_valid():
             form.save()
-            return render(request, 'flashcards/cards.html')
+            return redirect('flashcards', deck_number=flashcard.deck.pk)
+            # return render(request, 'flashcards/cards.html', { 'deck': flashcard.deck.title})
     else:
         form = FlashcardForm(instance=flashcard)
     return render(request, 'flashcards/edit_flashcard.html', {'form': form})
