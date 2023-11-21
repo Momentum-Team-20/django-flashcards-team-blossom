@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Deck, Flashcard
 from .forms import DeckForm, FlashcardForm
+import random
 
 
 @login_required
@@ -12,6 +13,7 @@ def deck_list(request):
 
 def cards(request, deck_number):
     flashcards = Flashcard.objects.filter(deck_id=deck_number)
+    # new_card = random.choice(flashcards)
     return render(request, 'flashcards/cards.html', {'flashcards': flashcards})
 
 
