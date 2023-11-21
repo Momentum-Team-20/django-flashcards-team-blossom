@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from .models import Deck, Flashcard
 from .forms import DeckForm, FlashcardForm
 
 
-# Create your views here.
+@login_required
 def deck_list(request):
-    decks = Deck.objects.all()
+    decks = Deck.objects.filter(user=request.user)
     return render(request, 'flashcards/index.html', {'decks': decks})
 
 
@@ -44,7 +45,8 @@ def edit_flashcard(request, pk):
         form = FlashcardForm(request.POST, instance=flashcard)
         if form.is_valid():
             form.save()
-            return render(request, 'flashcards/cards.html', {'form': form})
+            return redirect('flashcards', deck_number=flashcard.deck.pk)
+            # return render(request, 'flashcards/cards.html', { 'deck': flashcard.deck.title})
     else:
         form = FlashcardForm(instance=flashcard)
     return render(request, 'flashcards/index.html', {'decks': decks})
