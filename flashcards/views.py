@@ -15,11 +15,14 @@ def cards(request, deck_number):
     return render(request, 'flashcards/cards.html', {'flashcards': flashcards})
 
 
+@login_required
 def create_new_deck(request):
     if request.method == 'POST':
         form = DeckForm(request.POST)
         if form.is_valid():
-            form.save()
+            deck = form.save(commit=False)
+            deck.user = request.user
+            deck.save()
             return redirect('home')
     else:
         form = DeckForm()
