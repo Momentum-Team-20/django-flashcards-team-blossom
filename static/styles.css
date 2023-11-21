@@ -2,3 +2,39 @@ body {
     background-color: lightsalmon;
     color: rgb(39, 3, 39);
 }
+
+.flashcard {
+    width: 300px;
+    height: 200px;
+    border: 1px solid black;
+    text-align: center;
+}
+
+.flashcard-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+}
+
+.flashcard:hover .flashcard-inner {
+   transform: rotateY(180deg)
+}
+ 
+
+.flashcard-question {
+    background-color: aqua;
+}
+
+.flashcard-answer {
+    background-color: blueviolet;
+    transform: rotateY(180deg)
+}
+
+.flashcard-question, .flashcard-answer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}

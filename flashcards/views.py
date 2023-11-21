@@ -38,14 +38,16 @@ def create_new_flashcard(request):
 
 def edit_flashcard(request, pk):
     flashcard = get_object_or_404(Flashcard, pk=pk)
+    decks = Deck.objects.filter
+
     if request.method == 'POST':
         form = FlashcardForm(request.POST, instance=flashcard)
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return render(request, 'flashcards/cards.html', {'form': form})
     else:
         form = FlashcardForm(instance=flashcard)
-    return render(request, 'flashcards/edit_flashcard.html', {'form': form})
+    return render(request, 'flashcards/index.html', {'decks': decks})
 # <django.db.models.query_utils.DeferredAttribute object at 0x1028eb110>
 
 

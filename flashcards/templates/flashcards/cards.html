@@ -4,7 +4,14 @@
 <p>Deck: {{ deck.title }}</p>
 <ul>
   {% for flashcard in flashcards %}
-  <li>{{ flashcard.question }} {{ flashcard.answer }}</li>
+
+  <div class="flashcard">
+    <div class="flashcard-inner">
+      <div class="flashcard-question">{{ flashcard.question }}</div>
+      <div class="flashcard-answer">{{ flashcard.answer }}</div>
+    </div>
+  </div>
+
   <li>
     <a href="{% url 'edit_flashcard' flashcard.pk %}">Edit</a>
     <a href="{% url 'delete_flashcard' flashcard.pk %}">Delete</a>
