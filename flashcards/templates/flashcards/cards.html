@@ -3,24 +3,25 @@
 <!-- <p>The flashcards inside deck Math (for now)</p> -->
 <p>Deck: {{ deck }}</p>
 <ul>
-  {% for flashcard in flashcards %}
+
 
   <div class="flashcard">
     <div class="flashcard-inner">
-      <div class="flashcard-question">{{ flashcard.question }}</div>
+      <div class="flashcard-question">{{ new_card.question }}</div>
       <div class="flashcard-answer">
-        {{ flashcard.answer }}
+        {{ new_card.answer }}
         <button id="correct" onclick="">I knew that!</button>
         <button id="incorrect">I didn't know that!</button>
       </div>
     </div>
   </div>
+  <input type="button" value="Next Card" onclick="history.go(0)">
 
   <li>
-    <a href="{% url 'edit_flashcard' flashcard.pk %}">Edit</a>
-    <a href="{% url 'delete_flashcard' flashcard.pk %}">Delete</a>
+    <a href="{% url 'edit_flashcard' new_card.pk %}">Edit</a>
+    <a href="{% url 'delete_flashcard' new_card.pk %}">Delete</a>
   </li>
-  {% endfor %}
+
 </ul>
 <a href="{% url 'create_flashcard' deck.pk %}">Create New Flashcard</a>
 {% endblock %}

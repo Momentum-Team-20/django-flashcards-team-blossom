@@ -15,8 +15,8 @@ def deck_list(request):
 def cards(request, deck_number):
     flashcards = Flashcard.objects.filter(deck_id=deck_number, deck__user=request.user)
     deck = get_object_or_404(Deck, pk=deck_number)
-    # new_card = random.choice(flashcards)
-    return render(request, 'flashcards/cards.html', {'flashcards': flashcards, 'deck': deck})
+    new_card = random.choice(flashcards)
+    return render(request, 'flashcards/cards.html', {'new_card': new_card, 'deck': deck})
 
 
 @login_required
