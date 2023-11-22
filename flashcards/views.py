@@ -11,10 +11,12 @@ def deck_list(request):
     return render(request, 'flashcards/index.html', {'decks': decks})
 
 
+@login_required
 def cards(request, deck_number):
-    flashcards = Flashcard.objects.filter(deck_id=deck_number)
+    flashcards = Flashcard.objects.filter(deck_id=deck_number, deck__user=request.user)
+    deck = get_object_or_404(Deck, pk=deck_number)
     # new_card = random.choice(flashcards)
-    return render(request, 'flashcards/cards.html', {'flashcards': flashcards})
+    return render(request, 'flashcards/cards.html', {'flashcards': flashcards, 'deck': deck})
 
 
 @login_required
@@ -31,11 +33,16 @@ def create_new_deck(request):
     return render(request, 'flashcards/create_deck.html', {'form': form})
 
 
-def create_new_flashcard(request):
+@login_required
+def create_new_flashcard(request, pk):
+    deck = get_object_or_404(Deck, pk=pk)
     if request.method == 'POST':
         form = FlashcardForm(request.POST)
         if form.is_valid():
-            form.save()
+            flashcard = form.save(commit=False)
+            flashcard.user = request.user
+            flashcard.deck = deck
+            flashcard.save()
             return redirect('home')
     else:
         form = FlashcardForm()

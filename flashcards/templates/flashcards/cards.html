@@ -8,7 +8,8 @@
   <div class="flashcard">
     <div class="flashcard-inner">
       <div class="flashcard-question">{{ flashcard.question }}</div>
-      <div class="flashcard-answer">{{ flashcard.answer }}
+      <div class="flashcard-answer">
+        {{ flashcard.answer }}
         <button id="correct" onclick="">I knew that!</button>
         <button id="incorrect">I didn't know that!</button>
       </div>
@@ -21,5 +22,5 @@
   </li>
   {% endfor %}
 </ul>
-<a href="{% url 'create_flashcard' %}">Create New Flashcard</a>
+<a href="{% url 'create_flashcard' deck.pk %}">Create New Flashcard</a>
 {% endblock %}

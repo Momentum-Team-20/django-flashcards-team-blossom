@@ -7,7 +7,7 @@ class FlashcardForm(ModelForm):
 
     class Meta:
         model = Flashcard
-        fields = ['question', 'answer', 'deck']
+        fields = ['question', 'answer']
 
 
 class DeckForm(ModelForm):

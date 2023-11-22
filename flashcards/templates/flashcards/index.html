@@ -1,6 +1,4 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Team Blossom Flashcards</h1>
-<!-- <p>Check out our decks of flashcards below!</p> -->
 <h3>Decks</h3>
 <ul>
   {% for deck in decks %}
@@ -10,12 +8,13 @@
       <li><a href="{% url 'flashcards' deck.pk %}">Play</a></li>
     </ul>
   </li>
+  <a href="{% url 'create_flashcard' deck.pk %}"
+    ><button>Create New Flashcard</button></a
+  >
 
   {% endfor %}
 </ul>
 
 <a href="{% url 'new_deck' %}"><button>Create New Deck</button></a>
-
-<a href="{% url 'create_flashcard' %}"><button>Create New Flashcard</button></a>
 
 {% endblock %}
