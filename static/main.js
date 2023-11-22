@@ -13,12 +13,14 @@ let incorrectAnswerButtons = document.querySelectorAll('#incorrect')
 
 for ( let button of correctAnswerButtons) {
     button.addEventListener('click', (event) => {
-        button.style.color = 'green'
+        button.style.color = 'white'
+        button.style.backgroundColor = 'green'
     })
 }
 
 for ( let button of incorrectAnswerButtons) {
     button.addEventListener('click', (event) => {
-        button.style.color = 'red'
+        button.style.color = 'white'
+        button.style.backgroundColor = 'red'
     })
 }
