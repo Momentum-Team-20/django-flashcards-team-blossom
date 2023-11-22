@@ -13,10 +13,12 @@ Skills Practiced:
 - writing models and forms
 - debugging in the shell
 - Adding javaScript and CSS to the django project
+
 Key Takeaways: 
 - Giving the url in the template all the correct info it needs for the view to render properly (ie deck.pk)
 - This project really solidified for me the relationship of templates, views, and urls. 
 - Using QuerySets to pull objects out of the database
+
 Challenges: 
 - There are a lot of pieces that go into the whole thing really, but particularly into views that has been challenging to keep up with. Breaking things down as much as possible helps to know what to pass to the view and write in the view context. 
 
